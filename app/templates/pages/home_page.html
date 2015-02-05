@@ -1,17 +1,15 @@
-{% extends "base_templates/login_base.html" %} {# base_templates extends base_templates/login_base.html #} 
-
-{% block main %}
+{% extends "base_templates/login_base.html" %} {# base_templates extends base_templates/login_base.html #} {% block main %}
 <style type="text/css">
 #logo {
-	margin-top: 20%;
-	margin-bottom: 5%;
+    margin-top: 20%;
+    margin-bottom: 5%;
     width: 300px;
     height: auto;
 }
-.lead{
-	color: #777;
-	font-size: 1.3em;
-	margin-top: 10%;
+.lead {
+    color: #777;
+    font-size: 1.3em;
+    margin-top: 10%;
 }
 </style>
 <center>
@@ -22,11 +20,18 @@
 {% if not current_user.is_authenticated() %}
 <center>
     <p>
-       <a href="{{ url_for('user.login') }}">Sign In</a>&nbsp;|&nbsp;<a href="{{ url_for('user.register') }}">Register</a>
+        <a href="{{ url_for('user.login') }}">Sign In</a>&nbsp;|&nbsp;<a href="{{ url_for('user.register') }}">Register</a> {% else %}
+
+    </p>
+</center>
+<center>
+    <p><a href="{{ url_for('user.logout') }}">Sign Out</a>
     </p>
 </center>
 {% endif %}
 
-<center><p class = 'lead'> Where all your links live</p></center>
+<center>
+    <p class='lead'> Where all your links live</p>
+</center>
 
 {% endblock %}
