@@ -1,0 +1,66 @@
+{% extends "base_templates/base.html" %} {# base_templates extends base_templates/base.html #} {% block main %}
+<style type="text/css">
+form {
+    width: 80%;
+}
+.navbar {
+    background-color: #BC5798;
+    border-color: #BC5798;
+}
+.navbar-default .navbar-brand {
+    color: #fff;
+}
+@font-face {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+    font-size: 2em;
+}
+</style>
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#menu").mmenu({
+        "offCanvas": {
+            "position": "right"
+        },
+        "header": {
+            "title": "Settings",
+            "add": true,
+            "update": true
+        }
+    });
+});
+</script>
+<nav id="menu">
+    <ul>
+        <li>
+            {% if current_user.is_authenticated() %}
+            <a href="{{ url_for('user_profile_page') }}">{{ current_user.first_name or current_user.user_auth.username }}</a>
+
+        </li>
+        <li>
+            <a href="{{ url_for('user.logout') }}">Sign out</a> {% else %}
+            <a href="{{ url_for('user.login') }}">Sign in</a> {% endif %}
+        </li>
+    </ul>
+</nav>
+<nav class="navbar navbar-default">
+    <div class="navbar-header">
+        <a class="navbar-brand" style='font-family: HelveticaNeue-Light;' href="#">SnowFlake</a>
+        <a class="navbar-brand pull-right" href="#menu">
+            <span class="glyphicon glyphicon-cog"></span>
+        </a>
+
+    </div>
+</nav>
+<h1>User Profile</h1> {% from "base_templates/form_macros.html" import render_field, render_submit_field %}
+<form action="" method="POST" class="form" role="form">
+    <div class="row">
+        <div class="col-sm-6 col-md-5 col-lg-4">
+            {{ form.hidden_tag() }} {{ render_field(form.first_name, tabindex=240) }} {{ render_field(form.last_name, tabindex=250) }} {{ render_submit_field(form.submit, tabindex=280) }}
+        </div>
+    </div>
+</form>
+
+
+
+{% endblock %}

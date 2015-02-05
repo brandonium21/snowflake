@@ -1,0 +1,74 @@
+# Copyright 2014 SolidBuilds.com. All rights reserved
+#
+# Authors: Ling Thio <ling.thio@gmail.com>
+
+
+from flask import redirect, render_template, render_template_string
+from flask import request, url_for
+from app.app_and_db import app, db
+from app.users.forms import UserProfileForm
+from flask_user import current_user, login_required, roles_required
+from flask import request
+from flask import json
+from models import *
+#
+# User Profile form
+#
+@app.route('/user/profile', methods=['GET', 'POST'])
+@login_required
+def user_profile_page():
+    # Initialize form
+    form = UserProfileForm(request.form, current_user)
+
+    # Process valid POST
+    if request.method=='POST' and form.validate():
+
+        # Copy form fields to user_profile fields
+        form.populate_obj(current_user)
+
+        # Save user_profile
+        db.session.commit()
+
+        # Redirect to home page
+        return redirect(url_for('home_page'))
+
+    # Process GET or invalid POST
+    return render_template('users/user_profile_page.html',
+        form=form)
+
+@app.route('/test', methods=['GET', 'POST'])
+@login_required             # Limits access to authenticated users
+def testPage():
+    links = []
+    user_id = current_user.id
+    links = Url.query.filter_by(user_id = user_id).all()
+    
+    if request.method == 'POST':
+        title = request.form['title']
+        url = request.form['url']
+        description = request.form['description']
+        data = Url(title, url, description, user_id)
+        db.session.add(data)
+        db.session.commit()
+        
+        print links
+    print links
+    return render_template('pages/test.html', links= links)
+
+
+@app.route('/<username>', methods=['GET', 'POST'])
+def show(username):
+    #username
+    user = username
+    #user_id
+    userID = UserAuth.query.filter_by(username = user).first()
+    #links
+    links = Url.query.filter_by(user_id = userID.user_id).all()
+    print links
+    return render_template('pages/show.html', user = user, links = links)
+
+
+
+
+
+

@@ -1,0 +1,86 @@
+{% extends "base_templates/login_base.html" %} {# base_templates extends base_templates/login_base.html #} {% block main %}
+
+<style type="text/css">
+form {
+    width: 80%;
+    margin-bottom: 5%;
+}
+#list {
+    overflow: scroll;
+    height: 200px;
+    width: auto;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+.navbar {
+    background-color: #BC5798;
+    border-color: #BC5798;
+}
+.navbar-default .navbar-brand {
+    color: #fff;
+}
+@font-face {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+    font-size: 2em;
+}
+#description {
+    display: inline;
+    color: #777;
+}
+#link {
+    color: #BC5798;
+}
+.clist-group-item {
+    margin-bottom: 2px;
+}
+</style>
+<nav class="navbar navbar-default">
+    <div class="navbar-header">
+        <a class="navbar-brand" style='font-family: HelveticaNeue-Light;' href="#">SnowFlake</a>
+        <a class="navbar-brand pull-right" href="#menu">
+            <span class="glyphicon glyphicon-cog"></span>
+        </a>
+
+    </div>
+</nav>
+
+
+<center>
+    <h3>
+		Add Link
+	</h3>
+    <br>
+    <form id='form' action='/test' method="POST">
+        <div class="form-group">
+            <input type="text" class="form-control" name="title" placeholder="Title...">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" name="url" placeholder="Url...">
+        </div>
+        <textarea class="form-control" name='description' placeholder="Description" rows="2"></textarea>
+        <br>
+
+        <button type="submit" id='submit' class="btn btn-success"><strong>+</strong>
+        </button>
+    </form>
+    <div id='list'>
+
+        <ul class="list-group">
+            {% for link in links %}
+            <li class="list-group-item"><a id='link' class='pull-left' href="http://{{ link.url }}">{{ link.title }}</a>
+                <p id='description'>{{ link.description }}</p>
+            </li>
+            <div class='clearfix'></div>
+            {% endfor %}
+        </ul>
+    </div>
+</center>
+
+<script type="text/javascript">
+$(window).resize(function(e) {
+    
+});
+</script>
+{% endblock %}
