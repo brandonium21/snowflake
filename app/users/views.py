@@ -42,7 +42,7 @@ def testPage():
     links = []
     user_id = current_user.id
     links = Url.query.filter_by(user_id = user_id).all()
-    
+    uniqueID = UserAuth.query.filter_by(user_id = user_id).first()
     if request.method == 'POST':
         title = request.form['title']
         url = request.form['url']
@@ -53,7 +53,7 @@ def testPage():
         
         print links
     print links
-    return render_template('pages/test.html', links= links)
+    return render_template('pages/test.html', links= links, user = uniqueID)
 
 
 @app.route('/<username>', methods=['GET', 'POST'])
