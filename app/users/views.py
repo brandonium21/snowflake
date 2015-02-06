@@ -50,7 +50,6 @@ def testPage():
         data = Url(title, url, description, user_id)
         db.session.add(data)
         db.session.commit()
-        
         print links
     print links
     return render_template('pages/test.html', links= links, user = uniqueID)
@@ -67,6 +66,9 @@ def show(username):
     print links
     return render_template('pages/show.html', user = user, links = links)
 
+@app.route('/', methods=['GET', 'POST'])
+def alt_home():
+    return render_template('pages/home_page.html')
 
 
 
