@@ -55,13 +55,12 @@
     bottom: 0;
     width: 100%;
 }
-
-.media-object{
-	width: 100px;
-	height: auto;
+.media-object {
+    width: 100px;
+    height: auto;
 }
-.media{
-	margin-left: 4px;
+.media {
+    margin-left: 4px;
 }
 </style>
 <nav class="navbar navbar-default">
@@ -82,9 +81,13 @@
     </div>
     <div class="media-body ">
         <h4 class="media-heading">{{ user }}</h4>
+        <center>
+        <a href ="{{ url_for('user.register') }}" style="margin-top:20px; color: #fff; background-color: #BC5798; border-color: #BC5798;" class="btn btn-info ">Join SnowFlake
+        </a></center>
     </div>
 </div>
 {% endif %}
+
 
 
 <div id='list'>
