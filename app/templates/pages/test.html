@@ -49,12 +49,11 @@ form {
 
 <center>
     <h3>
-		Add Link
-	</h3>
-	<p>You unique link</p>
-	{% if user%}
-	<h5 class = 'lead'>https://snowflake-link.herokuapp.com/{{ user.username }}</h5>
-	{% endif %}
+        Add Link
+    </h3>
+    <p>You unique link</p>
+    {% if user%}
+    <h5 class='lead'>https://snowflake-link.herokuapp.com/{{ user.username }}</h5> {% endif %}
     <br>
     <form id='form' action='/test' method="POST">
         <div class="form-group">
@@ -84,7 +83,16 @@ form {
 
 <script type="text/javascript">
 $(window).resize(function(e) {
-    
+
 });
+
+window.onload = function() {
+    if (!window.location.hash) {
+        window.location = window.location + '#loaded';
+        window.location.reload();
+    }
+}
 </script>
+
+
 {% endblock %}
