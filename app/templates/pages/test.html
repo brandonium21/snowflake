@@ -85,13 +85,15 @@ form {
 $(window).resize(function(e) {
 
 });
-
+var timeoutID;
 window.onload = function() {
     if (!window.location.hash) {
         window.location = window.location + '#loaded';
+        timeoutID = window.setTimeout(2000);
         window.location.reload();
     }
 }
+
 </script>
 
 

@@ -51,6 +51,7 @@ def testPage():
         db.session.add(data)
         db.session.commit()
         print links
+    print 'worked'
     return render_template('pages/test.html', links= links, user = uniqueID)
 
 
