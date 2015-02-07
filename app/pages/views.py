@@ -27,4 +27,3 @@ def member_page():
 def admin_page():
     return render_template('pages/admin_page.html')
 
-

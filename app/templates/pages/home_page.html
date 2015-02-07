@@ -20,12 +20,13 @@
 {% if not current_user.is_authenticated() %}
 <center>
     <p>
-        <a href="{{ url_for('user.login') }}">Sign In</a>&nbsp;|&nbsp;<a href="{{ url_for('user.register') }}">Register</a> {% else %}
+        <a href="{{ url_for('user.login') }}">Sign In</a>&nbsp;|&nbsp;<a href="{{ url_for('user.register') }}">Register</a> 
+        {% else %}
 
     </p>
 </center>
 <center>
-    <p><a href="{{ url_for('user.logout') }}">Sign Out</a>
+    <p><a href="{{ url_for('user.logout') }}">Sign Out</a>&nbsp;|&nbsp;<a href="{{ url_for('testPage') }}">Add Link</a> 
     </p>
 </center>
 {% endif %}

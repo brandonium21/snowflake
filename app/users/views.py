@@ -51,7 +51,6 @@ def testPage():
         db.session.add(data)
         db.session.commit()
         print links
-    print current_user.username
     return render_template('pages/test.html', links= links, user = uniqueID)
 
 
@@ -70,7 +69,6 @@ def show(username):
 def alt_home():
     return render_template('pages/home_page.html')
 
-
 @app.route('/log', methods= ['GET', 'POST'])
 @roles_required('admin')
 def log():
@@ -78,5 +76,6 @@ def log():
     print users
     return render_template("pages/log.html", users= users )
     return 'none'
+
 
 
