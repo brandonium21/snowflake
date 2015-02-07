@@ -1,0 +1,73 @@
+{% extends "base_templates/page_base.html" %} {# base_templates/page_base.html extends base_templates/base_edit.html #} {% block main %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>SnowFlake(admin)</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+</head>
+<style type="text/css">
+body {
+    background-color: #BC5798;
+}
+.leadp {
+    padding-top: 2%;
+    font-size: 1.6em;
+}
+.text-primary {
+    font-weight: 500;
+}
+hr {} 
+.jumbotron {}
+</style>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">SnowFlake User Log (admin Only)</a>
+        </div>
+    </nav>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class='jumbotron'>
+                <div class='container'>
+                    <ul>
+                        <li>
+                            <h4>Number of Users</h4>
+                        </li>
+                        <hr>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class='jumbotron'>
+                <div class='container'>
+                    <ul>
+                        {% if users %} {% for user in users %}
+                        <li>
+                            <h4>{{ user.username }}</h4>
+                        </li>
+                        {% endfor %} {% else %}
+                        <h4>None</h4>
+
+
+                        <hr>{% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript">
+</script>
+
+</html>
+
+{% endblock %}
