@@ -23,3 +23,5 @@ class UserProfileForm(Form):
     last_name = StringField('Last name', validators=[
         validators.DataRequired('Last name is required')])
     submit = SubmitField('Save')
+    #stufff
+    
