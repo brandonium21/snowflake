@@ -14,7 +14,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', '\xc1\x06\x98\x16\x9f\xafk[\xd1~\x00\xf6\xd
 # PLEASE USE A DIFFERENT KEY FOR PRODUCTION ENVIRONMENTS!
                                                     
 # SQLAlchemy settings
-SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'sqlite:///app.sqlite')
+SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
 
 # Flask-Mail settings
 MAIL_USERNAME =           os.getenv('MAIL_USERNAME',        'brandonium21@gmail.com')
