@@ -1,5 +1,11 @@
 {% extends "base_templates/login_base.html" %} {# base_templates extends base_templates/login_base.html #} {% block main %}
 <style type="text/css">
+html,
+body {
+    margin:0;
+    padding:0;
+    height:100%;
+}
 .navbar {
     background-color: #BC5798;
     border-color: #BC5798;
@@ -50,9 +56,8 @@
 #list {
     overflow: scroll;
     height: 300px;
-    width: auto;
-    position: absolute;
-    bottom: 0;
+    position: fixed;
+    bottom: 0px;
     width: 100%;
 }
 .media-object {
