@@ -31,7 +31,7 @@ hr {}
             <a class="navbar-brand" href="#">SnowFlake User Log (admin Only)</a>
         </div>
     </nav>
-
+{% if users %} {% for user in users %}
     <div class="row">
         <div class="col-md-4">
             <div class='jumbotron'>
@@ -39,6 +39,7 @@ hr {}
                     <ul>
                         <li>
                             <h4>Number of Users</h4>
+                            <h3 style="color: blue;">((users|length))</h3>
                         </li>
                         <hr>
                     </ul>
@@ -49,7 +50,7 @@ hr {}
             <div class='jumbotron'>
                 <div class='container'>
                     <ul>
-                        {% if users %} {% for user in users %}
+                        
                         <li>
                             <h4>{{ user.username }}</h4>
                         </li>
