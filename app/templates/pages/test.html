@@ -35,6 +35,9 @@ form {
 .clist-group-item {
     margin-bottom: 2px;
 }
+#link2{
+    color: red;
+}
 </style>
 <nav class="navbar navbar-default">
     <div class="navbar-header">
@@ -53,7 +56,7 @@ form {
     </h3>
     <p>You unique link</p>
     {% if user%}
-    <h5 class='lead'>https://snowflake-link.herokuapp.com/{{ user.username }}</h5> {% endif %}
+    <h5 id = 'link2' class='lead'>https://brandonium21.me/{{ user.username }}</h5> {% endif %}
     <br>
     <form id='form' action='/test' method="POST">
         <div class="form-group">
