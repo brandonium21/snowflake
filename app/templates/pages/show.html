@@ -2,9 +2,9 @@
 <style type="text/css">
 html,
 body {
-    margin:0;
-    padding:0;
-    height:100%;
+    margin:0px;
+    padding:0px;
+    
 }
 .navbar {
     background-color: #BC5798;
@@ -35,7 +35,7 @@ body {
     /* Required for text-overflow to do anything */
     
     white-space: nowrap;
-    overflow: hidden scroll;
+    overflow: hidden;
 }
 #info {
     margin-top: 0%;
@@ -59,6 +59,8 @@ body {
     position: relative;
     bottom: 0px;
     width: 100%;
+    clear:both;
+
 }
 .media-object {
     width: 100px;
@@ -108,7 +110,5 @@ body {
         {% endfor %}
     </ul>
 </div>
-
-
 
 {% endblock %}
