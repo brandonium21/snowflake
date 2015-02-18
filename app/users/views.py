@@ -42,11 +42,13 @@ def testPage():
     user_id = current_user.id
     links = Url.query.filter_by(user_id = user_id).all()
     uniqueID = UserAuth.query.filter_by(user_id = user_id).first()
+
     if request.method == 'POST':
+        clicks = 0
         title = request.form['title']
         url = request.form['url']
         description = request.form['description']
-        data = Url(title, url, description, user_id)
+        data = Url(title, url, description, clicks, user_id)
         db.session.add(data)
         db.session.commit()
         links = Url.query.filter_by(user_id = user_id).all()
@@ -56,14 +58,13 @@ def testPage():
 
 @app.route('/<username>', methods=['GET', 'POST'])
 def show(username):
-    #username
-    user = username
     #user_id
-    userID = UserAuth.query.filter_by(username = user).first()
+    userID = UserAuth.query.filter_by(username = username).first()
     #links
     links = Url.query.filter_by(user_id = userID.user_id).all()
+
     print links
-    return render_template('pages/show.html', user = user, links = links)
+    return render_template('pages/show.html', user = username, links = links)
 
 @app.route('/', methods=['GET', 'POST'])
 def alt_home():
@@ -73,7 +74,9 @@ def alt_home():
 @roles_required('admin')
 def log():
     users = UserAuth.query.all()
+    url = Url.query.all()
     print users
+    print url
     return render_template("pages/log.html", users= users )
     return 'none'
 

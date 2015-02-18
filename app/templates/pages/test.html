@@ -35,7 +35,7 @@ form {
 .clist-group-item {
     margin-bottom: 2px;
 }
-#link2{
+#link2 {
     color: red;
 }
 </style>
@@ -56,7 +56,7 @@ form {
     </h3>
     <p>You unique link</p>
     {% if user%}
-    <h5 id = 'link2' class='lead'>https://brandonium21.me/{{ user.username }}</h5> {% endif %}
+    <h5 id='link2' class='lead'>https://brandonium21.me/{{ user.username }}</h5> {% endif %}
     <br>
     <form id='form' action='/test' method="POST">
         <div class="form-group">
@@ -75,7 +75,7 @@ form {
 
         <ul class="list-group">
             {% for link in links %}
-            <li class="list-group-item"><a id='link' class='pull-left' href="http://{{ link.url }}">{{ link.title }}</a>
+            <li class="list-group-item"><a id={{link.id}} class='pull-left' href="http://{{ link.url }}">{{ link.title }}</a>
                 <p id='description'>{{ link.description }}</p>
             </li>
             <div class='clearfix'></div>
@@ -87,7 +87,9 @@ form {
 <script type="text/javascript">
 $(window).resize(function(e) {
 
-});
+}); 
+
+
 
 </script>
 

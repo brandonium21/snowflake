@@ -4,8 +4,12 @@
 
 from app.app_and_db import app, db
 from app.startup.init_app import init_app
+from flask.ext.script import Manager
+from flask.ext.migrate import Migrate, MigrateCommand
 
 init_app(app, db)
+
+
 
 # Start a development web server if executed from the command line
 if __name__ == "__main__":
