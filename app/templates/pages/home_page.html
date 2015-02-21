@@ -3,7 +3,7 @@
 #logo {
     margin-top: 10%;
     margin-bottom: 5%;
-    width: 150px;
+    width: 220px;
     height: auto;
 }
 .lead {
@@ -16,17 +16,19 @@
     <img id='logo' src="static/img/title.png">
 </center>
 
+<center>
+    <p class='lead'>SnowFlake is a web app that gives you a unique link (SnowFlake) for a collection of links that you provide. While Instagram only grants you one URL, Snowflake provide a way to share all your links.</p>
+</center>
 
 {% if not current_user.is_authenticated() %}
 <center>
     <p>
-        <a href="{{ url_for('user.login') }}">Sign In</a>&nbsp;|&nbsp;<a href="{{ url_for('user.register') }}">Register</a> 
-        {% else %}
+        <a href="{{ url_for('user.login') }}">Sign In</a>&nbsp;|&nbsp;<a href="{{ url_for('user.register') }}">Register</a> {% else %}
 
     </p>
 </center>
 <center>
-    <p><a href="{{ url_for('user.logout') }}">Sign Out</a>&nbsp;|&nbsp;<a href="{{ url_for('testPage') }}">Add Link</a> 
+    <p><a href="{{ url_for('user.logout') }}">Sign Out</a>&nbsp;|&nbsp;<a href="{{ url_for('testPage') }}">Add Link</a>
     </p>
 </center>
 {% endif %}
