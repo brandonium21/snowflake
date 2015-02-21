@@ -11,13 +11,16 @@
     font-size: 1.3em;
     margin-top: 10%;
 }
+#disc {
+    width: 75%;
+}
 </style>
 <center>
     <img id='logo' src="static/img/title.png">
 </center>
 
 <center>
-    <p class='lead'>SnowFlake is a web app that gives you a unique link (SnowFlake) for a collection of links that you provide. While Instagram only grants you one URL, Snowflake provide a way to share all your links.</p>
+    <p id= 'disc' class='lead'>SnowFlake is a web app that gives you a unique link for a collection of links that you provide. While Instagram only grants you one URL, Snowflake provide a way to share all your links.</p>
 </center>
 
 {% if not current_user.is_authenticated() %}
