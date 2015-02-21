@@ -48,7 +48,7 @@ def testPage():
         title = request.form['title']
         url = request.form['url']
         description = request.form['description']
-        data = Url(title, url, description, clicks, user_id)
+        data = Url(title, url, description, user_id)
         db.session.add(data)
         db.session.commit()
         links = Url.query.filter_by(user_id = user_id).all()

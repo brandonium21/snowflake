@@ -16,13 +16,13 @@ def init_app(app, db, extra_config_settings={}):
     app.config.from_object('app.startup.settings')          # Read config from 'app/startup/settings.py' file
     app.config.update(extra_config_settings)                # Overwrite with 'extra_config_settings' parameter
     if app.testing:
-        app.config['WTF_CSRF_ENABLED'] = False              # Disable CSRF checks while testing
+        app.config['WTF_CSRF_ENABLED'] = True              # Disable CSRF checks while testing
 
     # Setup Flask-Mail
     mail = Mail(app)
 
     # Setup an error-logger to send emails to app.config.ADMINS
-    init_error_logger_with_email_handler(app)
+    #init_error_logger_with_email_handler(app)
 
     # Setup Flask-User to handle user account related forms
     from app.users.models import UserAuth, User
