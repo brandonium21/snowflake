@@ -22,7 +22,7 @@ class User(db.Model, UserMixin):
     user_auth = db.relationship('UserAuth', uselist=False)
     roles = db.relationship('Role', secondary='user_roles',
             backref=db.backref('users', lazy='dynamic'))
-
+#none
 
 # Define the UserAuth data model.
 class UserAuth(db.Model, UserMixin):
