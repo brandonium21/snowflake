@@ -24,6 +24,8 @@ MAIL_SERVER =             os.getenv('MAIL_SERVER',          'smtp.gmail.com')
 MAIL_PORT =           int(os.getenv('MAIL_PORT',            '465'))
 MAIL_USE_SSL =        int(os.getenv('MAIL_USE_SSL',         '1'))  # Use '1' for True and '0' for False
 MAIL_USE_TLS =        int(os.getenv('MAIL_USE_TLS',         '0'))  # Use '1' for True and '0' for False
+USER_ENABLE_LOGIN_WITHOUT_CONFIRM = False
+USER_ENABLE_CONFIRM_EMAIL = False
 
 ADMINS = []
 admin1 = os.getenv('ADMIN1', '"admin1" <brandondrice@aol.com>')
