@@ -15,8 +15,6 @@ class User(db.Model, UserMixin):
 
     # User information
     active = db.Column('is_active', db.Boolean(), nullable=False, server_default='0')
-    first_name = db.Column(db.String(50), nullable=False, server_default='')
-    last_name = db.Column(db.String(50), nullable=False, server_default='')
 
     # Relationships
     user_auth = db.relationship('UserAuth', uselist=False)
