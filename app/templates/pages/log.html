@@ -53,6 +53,7 @@ hr {} .jumbotron {}
                         {% for user in users %}
                         <li>
                             <h4><a href="{{ user.username }}">{{ user.username }}</a></h4>
+                            <p>{{ user.email }}</p>
                         </li>
                         {% endfor %} {% else %}
                         <h4>None</h4>
