@@ -54,7 +54,7 @@ form {
     <h3>
         Add Link
     </h3>
-    <p>You unique link</p>
+    <p>Your unique link</p>
     {% if user%}
     <h5 id='link2' class='lead'><a href="www.brandonium21.me/{{ user.username }}">http://brandonium21.me/{{ user.username }}</a></h5> {% endif %}
     <br>
@@ -75,7 +75,7 @@ form {
 
         <ul class="list-group">
             {% for link in links %}
-            <li class="list-group-item"><a id={{link.id}} class='pull-left' href="http://{{ link.url }}">{{ link.title }}</a>
+            <li class="list-group-item"><a id={{link.id}} class='pull-left' href="{{ link.url }}">{{ link.title }}</a>
                 <p id='description'>{{ link.description }}</p>
             </li>
             <div class='clearfix'></div>
