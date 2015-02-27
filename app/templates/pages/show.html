@@ -103,7 +103,7 @@ body {
 <div id='list'>
     <ul class="list-group">
         {% for link in links %}
-        <li style="cursor: pointer;" onclick="window.location='http://{{ link.url }}';" class="list-group-item"><a id='link' class='' href="#">{{ link.title }}</a>
+        <li style="cursor: pointer;" class="list-group-item"><a id='link' class='' href="{{ link.url }}">{{ link.title }}</a>
             <p class='right' id='description'>{{ link.description }}</p>
         </li>
         <div class='clearfix'></div>
