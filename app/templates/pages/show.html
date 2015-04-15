@@ -2,30 +2,37 @@
 <style type="text/css">
 html,
 body {
-    margin:0px;
-    padding:0px;
-    
+    margin: 0px;
+    padding: 0px;
 }
+
 .navbar {
     background-color: #BC5798;
     border-color: #BC5798;
 }
+
 .navbar-default .navbar-brand {
     color: #fff;
 }
+
 @font-face {
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     font-weight: 300;
     font-size: 2em;
 }
-#description {} #link {
+
+#description {}
+
+#link {
     color: #BC5798;
 }
+
 .left {
     float: left;
     width: 50%;
     clear: left;
 }
+
 .right {
     display: inline;
     color: #777;
@@ -37,6 +44,7 @@ body {
     white-space: nowrap;
     overflow: hidden;
 }
+
 #info {
     margin-top: 0%;
     width: auto;
@@ -48,28 +56,32 @@ body {
     border-top-width: 1px;
     border-bottom-width: 1px;
 }
+
 .thumbnail {
     width: 90px;
     height: auto;
     border: 0px;
 }
+
 #list {
     overflow: scroll;
     height: 150px;
     position: relative;
     bottom: 0px;
     width: 100%;
-    clear:both;
-
+    clear: both;
 }
+
 .media-object {
     width: 100px;
     height: auto;
 }
+
 .media {
     margin-left: 4px;
 }
-#join{
+
+#join {
     margin-bottom: 7%;
 }
 </style>
@@ -79,7 +91,6 @@ body {
         <a class="navbar-brand pull-right" href="#menu">
             <span class="glyphicon glyphicon-cog"></span>
         </a>
-
     </div>
 </nav>
 {% if user %}
@@ -92,14 +103,14 @@ body {
     <div class="media-body ">
         <h4 class="media-heading">{{ user }}</h4>
         <center>
-        <a id = 'join' href ="{{ url_for('user.register') }}" style="margin-top:20px; color: #fff; background-color: #BC5798; border-color: #BC5798;" class="btn btn-info ">Join SnowFlake
+            <a id='join' href="{{ url_for('user.register') }}" style="margin-top:20px; color: #fff; background-color: #BC5798; border-color: #BC5798;" class="btn btn-info ">Join SnowFlake
         </a></center>
     </div>
 </div>
 {% endif %}
-
-
-
+<center>
+    <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"></div>
+</center>
 <div id='list'>
     <ul class="list-group">
         {% for link in links %}
@@ -111,4 +122,12 @@ body {
     </ul>
 </div>
 
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=353058034890090";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 {% endblock %}
