@@ -42,13 +42,13 @@ def testPage():
     user_id = current_user.id
     links = Url.query.filter_by(user_id = user_id).all()
     uniqueID = UserAuth.query.filter_by(user_id = user_id).first()
-        
-    if request.method == 'POST':
+
+    if request.method == 'DELETE':
         id_get = request.form['delete']
         id_row = Url.query.get(id_get)
         db.session.delete(id_row)
         db.session.commit()
-
+    if request.method == 'POST':
         clicks = 0
         title = request.form['title']
         url = request.form['url']
