@@ -1,10 +1,10 @@
 {% extends "base_templates/login_base.html" %} {# base_templates extends base_templates/login_base.html #} {% block main %}
-
 <style type="text/css">
 form {
     width: 80%;
     margin-bottom: 5px;
 }
+
 #list {
     overflow: scroll;
     height: 200px;
@@ -13,28 +13,35 @@ form {
     bottom: 0;
     width: 100%;
 }
+
 .navbar {
     background-color: #BC5798;
     border-color: #BC5798;
 }
+
 .navbar-default .navbar-brand {
     color: #fff;
 }
+
 @font-face {
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     font-weight: 300;
     font-size: 2em;
 }
+
 #description {
     display: inline;
     color: #777;
 }
+
 #link {
     color: #BC5798;
 }
+
 .clist-group-item {
     margin-bottom: 2px;
 }
+
 #link2 {
     color: red;
 }
@@ -45,11 +52,8 @@ form {
         <a class="navbar-brand pull-right" href="#menu">
             <span class="glyphicon glyphicon-cog"></span>
         </a>
-
     </div>
 </nav>
-
-
 <center>
     <h3>
         Add Link
@@ -67,30 +71,28 @@ form {
         </div>
         <textarea class="form-control" name='description' placeholder="Description" rows="2"></textarea>
         <br>
-
         <button type="submit" id='submit' class="btn btn-success"><strong>+</strong>
         </button>
     </form>
     <div id='list'>
-
         <ul class="list-group">
             {% for link in links %}
             <li class="list-group-item"><a id={{link.id}} class='pull-left' href="{{ link.url }}">{{ link.title }}</a>
                 <p id='description'>{{ link.description }}</p>
+                <form action="/test" class='pull-left' method="DELETE">
+                    <input type=hidden value="{{ link.id }}" name="id"></input>
+                    <button type="submit" id='submit' class="btn btn-danger"><strong>x</strong>
+                    </button>
+                </form>
             </li>
             <div class='clearfix'></div>
             {% endfor %}
         </ul>
     </div>
 </center>
-
 <script type="text/javascript">
 $(window).resize(function(e) {
 
 });
 </script>
-
-
-
-
 {% endblock %}

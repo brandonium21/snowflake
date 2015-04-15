@@ -36,13 +36,17 @@ def user_profile_page():
     return render_template('users/user_profile_page.html',
         form=form)
 
-@app.route('/test', methods=['GET', 'POST'])
+@app.route('/test', methods=['GET', 'POST', 'DELETE'])
 @login_required             # Limits access to authenticated users
 def testPage():
     user_id = current_user.id
     links = Url.query.filter_by(user_id = user_id).all()
     uniqueID = UserAuth.query.filter_by(user_id = user_id).first()
-
+    if request.method == 'DELETE':
+        id_get = request.form['id']
+        id_row = Url.query.filter_by(id = id_get)
+        db.session.delete(id_row)
+        db.session.commit()
     if request.method == 'POST':
         clicks = 0
         title = request.form['title']
