@@ -104,7 +104,8 @@ $(window).resize(function(e) {
 
 <script>
 function reload() {
-    document.getElementById({{link.id}}).children[0].style.display = "none"
+    setTimeout( relot(){ location.reload(); }, 50  );
+    
 }
 </script>
 {% endblock %}
