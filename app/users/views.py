@@ -44,7 +44,7 @@ def testPage():
     uniqueID = UserAuth.query.filter_by(user_id = user_id).first()
 
     if request.method == 'POST':
-        id_get = request.form['id']
+        id_get = request.form['delete']
         id_row = Url.query.get(id_get)
         db.session.delete(id_row)
         db.session.commit()
