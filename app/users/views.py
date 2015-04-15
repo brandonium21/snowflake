@@ -42,26 +42,25 @@ def testPage():
     user_id = current_user.id
     links = Url.query.filter_by(user_id = user_id).all()
     uniqueID = UserAuth.query.filter_by(user_id = user_id).first()
-        
-    if request.method == 'POST':
-        if request.form['delete'] > 0:
+    if request.form['delete'] > 0:
             id_get = request.form['delete']
             id_row = Url.query.get(id_get)
             db.session.delete(id_row)
             db.session.commit()
-        else:    
-            clicks = 0
-            title = request.form['title']
-            url = request.form['url']
-            if url.startswith('http://') or url.startswith('https://'):
-                url = url
-            else:
-                url = 'http://' + url
-            description = request.form['description']
-            data = Url(title, url, description, user_id)
-            db.session.add(data)
-            db.session.commit()
-            links = Url.query.filter_by(user_id = user_id).all()
+            
+    if request.method == 'POST':
+        clicks = 0
+        title = request.form['title']
+        url = request.form['url']
+        if url.startswith('http://') or url.startswith('https://'):
+            url = url
+        else:
+            url = 'http://' + url
+        description = request.form['description']
+        data = Url(title, url, description, user_id)
+        db.session.add(data)
+        db.session.commit()
+        links = Url.query.filter_by(user_id = user_id).all()
     print 'worked'
     return render_template('pages/test.html', links= links, user = uniqueID)
 
