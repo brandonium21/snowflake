@@ -47,6 +47,10 @@ def testPage():
         clicks = 0
         title = request.form['title']
         url = request.form['url']
+        if url.startswith('http://') or url.startswith('https://'):
+            url = url
+        else:
+            url = 'http://' + url
         description = request.form['description']
         data = Url(title, url, description, user_id)
         db.session.add(data)
