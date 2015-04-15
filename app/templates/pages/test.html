@@ -87,8 +87,7 @@ form {
             <li class="list-group-item"><a id={{link.id}} class='pull-left' href="{{ link.url }}">{{ link.title }}</a>
                 <p id='description'>{{ link.description }}</p>
                 <form action="/delete" id = 'id' method="POST">
-                        <input type="hidden" name="leroyyyyy" value="jekinnnnss">
-                        <button type="submit" id = 'app' name='delete' value = "{{link.id}}" onclick="var elem = document.getElementById('{{link.id}}'); elem.parentNode.removeChild(elem)" class="btn btn-danger"><strong>x</strong>
+                        <button type="submit" id = 'app' name='delete' value = "{{link.id}}" class="btn btn-danger"><strong>x</strong>
                     </button>
                 </form>
             </li>
@@ -101,11 +100,5 @@ form {
 $(window).resize(function(e) {
 
 });
-</script>
-
-<script>
-function reload() {
-    setTimeout(location.reload, 4000);
-}
 </script>
 {% endblock %}
