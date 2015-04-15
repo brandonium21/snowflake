@@ -51,17 +51,17 @@ def testPage():
             db.session.commit()
             return 'done'
         #clicks = 0
-            title = request.form['title']
-            url = request.form['url']
-            if url.startswith('http://') or url.startswith('https://'):
-                url = url
-            else:
-                url = 'http://' + url
-            description = request.form['description']
-            data = Url(title, url, description, user_id)
-            db.session.add(data)
-            db.session.commit()
-            links = Url.query.filter_by(user_id = user_id).all()
+        title = request.form['title']
+        url = request.form['url']
+        if url.startswith('http://') or url.startswith('https://'):
+            url = url
+        else:
+            url = 'http://' + url
+        description = request.form['description']
+        data = Url(title, url, description, user_id)
+        db.session.add(data)
+        db.session.commit()
+        links = Url.query.filter_by(user_id = user_id).all()
     print 'worked'
     return render_template('pages/test.html', links= links, user = uniqueID)
 
