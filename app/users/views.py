@@ -49,7 +49,7 @@ def testPage():
             id_row = Url.query.get(id_get)
             db.session.delete(id_row)
             db.session.commit()
-            return 'done'
+        return 'done'
         #clicks = 0
         title = request.form['title']
         url = request.form['url']
