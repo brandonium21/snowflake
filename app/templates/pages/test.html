@@ -48,7 +48,9 @@ form {
 #delete{
     position: absolute;
     right: 0;
-    top: 1;
+    top: 0;
+    margin-bottom: 1;
+    margin-top: 1;
 }
 </style>
 <nav class="navbar navbar-default">
@@ -84,7 +86,7 @@ form {
             {% for link in links %}
             <li class="list-group-item"><a id={{link.id}} class='pull-left' href="{{ link.url }}">{{ link.title }}</a>
                 <p id='description'>{{ link.description }}</p>
-                <form action="/test" method="DELETE">
+                <form action="/test" id = 'id' method="DELETE">
                     <input type=hidden value="{{ link.id }}" name="id"></input>
                         <button type="submit" id='delete' class="btn btn-danger"><strong>x</strong>
                     </button>
