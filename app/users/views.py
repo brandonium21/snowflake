@@ -36,32 +36,40 @@ def user_profile_page():
     return render_template('users/user_profile_page.html',
         form=form)
 
+@app.route('/delete', methods=['GET', 'POST'])
+@login_required             # Limits access to authenticated users
+def delete():
+    user_id = current_user.id
+    links = Url.query.filter_by(user_id = user_id).all()
+    uniqueID = UserAuth.query.filter_by(user_id = user_id).first()
+
+    if request.method == 'POST':
+            id_get = request.form['delete']
+            id_row = Url.query.get(id_get)
+            db.session.delete(id_row)
+            db.session.commit()
+    return render_template('pages/test.html', links= links, user = uniqueID)
+
+
 @app.route('/test', methods=['GET', 'POST'])
 @login_required             # Limits access to authenticated users
 def testPage():
     user_id = current_user.id
     links = Url.query.filter_by(user_id = user_id).all()
-    uniqueID = UserAuth.query.filter_by(user_id = user_id).first()
-        
+    uniqueID = UserAuth.query.filter_by(user_id = user_id).first()      
     if request.method == 'POST':
         #clicks = 0
-        title = request.form['title']
-        url = request.form['url']
-        if url.startswith('http://') or url.startswith('https://'):
-            url = url
-        else:
-            url = 'http://' + url
-        description = request.form['description']
-        data = Url(title, url, description, user_id)
-        db.session.add(data)
-        db.session.commit()
-        links = Url.query.filter_by(user_id = user_id).all()
-        if request.form['delete'] > 0:
-            id_get = request.form['delete']
-            id_row = Url.query.get(id_get)
-            db.session.delete(id_row)
+            title = request.form['title']
+            url = request.form['url']
+            if url.startswith('http://') or url.startswith('https://'):
+                url = url
+            else:
+                url = 'http://' + url
+            description = request.form['description']
+            data = Url(title, url, description, user_id)
+            db.session.add(data)
             db.session.commit()
-        return 'done'
+            links = Url.query.filter_by(user_id = user_id).all()
     print 'worked'
     return render_template('pages/test.html', links= links, user = uniqueID)
 
