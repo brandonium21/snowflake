@@ -45,6 +45,11 @@ form {
 #link2 {
     color: red;
 }
+#delete{
+    position: absolute;
+right: 0;
+top: /* whatever */;
+}
 </style>
 <nav class="navbar navbar-default">
     <div class="navbar-header">
@@ -82,7 +87,7 @@ form {
                 <form action="/test" method="DELETE">
                     <input type=hidden value="{{ link.id }}" name="id"></input>
                     <p>
-                        <button type="submit" id='submit' class="btn btn-danger"><strong>x</strong>
+                        <button type="submit" id='delete' class="btn btn-danger"><strong>x</strong>
                     </p>
                     </button>
                 </form>
