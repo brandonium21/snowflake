@@ -44,12 +44,6 @@ def testPage():
     uniqueID = UserAuth.query.filter_by(user_id = user_id).first()
         
     if request.method == 'POST':
-        if request.form['delete'] > 0:
-            id_get = request.form['delete']
-            id_row = Url.query.get(id_get)
-            db.session.delete(id_row)
-            db.session.commit()
-        return 'done'
         #clicks = 0
         title = request.form['title']
         url = request.form['url']
@@ -62,6 +56,12 @@ def testPage():
         db.session.add(data)
         db.session.commit()
         links = Url.query.filter_by(user_id = user_id).all()
+        if request.form['delete'] > 0:
+            id_get = request.form['delete']
+            id_row = Url.query.get(id_get)
+            db.session.delete(id_row)
+            db.session.commit()
+        return 'done'
     print 'worked'
     return render_template('pages/test.html', links= links, user = uniqueID)
 
