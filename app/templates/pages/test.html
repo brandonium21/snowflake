@@ -47,8 +47,9 @@ form {
 }
 #delete{
     position: absolute;
-right: 0;
-top: 0;
+    right: 0;
+    top: 1;
+    bottom: 1;
 }
 </style>
 <nav class="navbar navbar-default">
@@ -86,9 +87,7 @@ top: 0;
                 <p id='description'>{{ link.description }}</p>
                 <form action="/test" method="DELETE">
                     <input type=hidden value="{{ link.id }}" name="id"></input>
-                    <p>
                         <button type="submit" id='delete' class="btn btn-danger"><strong>x</strong>
-                    </p>
                     </button>
                 </form>
             </li>
