@@ -87,7 +87,7 @@ form {
             <li class="list-group-item"><a id={{link.id}} class='pull-left' href="{{ link.url }}">{{ link.title }}</a>
                 <p id='description'>{{ link.description }}</p>
                 <form action="/delete" id = 'id' method="POST">
-                        <button type="submit" id = 'app' name='delete' value = "{{link.id}}" class="btn btn-danger"><strong>x</strong>
+                        <button type="submit" id = 'app' name='delete' value = "{{link.id}}" onClick="window.location.reload()"class="btn btn-danger"><strong>x</strong>
                     </button>
                 </form>
             </li>
