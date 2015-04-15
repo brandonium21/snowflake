@@ -45,7 +45,7 @@ def testPage():
 
     if request.method == 'DELETE':
         id_get = request.form['id']
-        id_row = Url.query.filter_by(id = id_get).first()
+        id_row = Url.query.get(id_get)
         db.session.delete(id_row)
         db.session.commit()
     if request.method == 'POST':
