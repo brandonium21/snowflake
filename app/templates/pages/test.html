@@ -79,9 +79,11 @@ form {
             {% for link in links %}
             <li class="list-group-item"><a id={{link.id}} class='pull-left' href="{{ link.url }}">{{ link.title }}</a>
                 <p id='description'>{{ link.description }}</p>
-                <form action="/test" class='pull-left' method="DELETE">
+                <form action="/test" method="DELETE">
                     <input type=hidden value="{{ link.id }}" name="id"></input>
-                    <button type="submit" id='submit' class="btn btn-danger"><strong>x</strong>
+                    <p>
+                        <button type="submit" id='submit' class="btn btn-danger"><strong>x</strong>
+                    </p>
                     </button>
                 </form>
             </li>
