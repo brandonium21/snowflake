@@ -49,8 +49,8 @@ def testPage():
             id_row = Url.query.get(id_get)
             db.session.delete(id_row)
             db.session.commit()
+            break
         #clicks = 0
-        if request.form['title'] >0:
             title = request.form['title']
             url = request.form['url']
             if url.startswith('http://') or url.startswith('https://'):
