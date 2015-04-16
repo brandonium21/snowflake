@@ -49,7 +49,7 @@ def delete():
         db.session.delete(id_row)
         db.session.commit()
         return render_template('pages/test.html', links= links, user = uniqueID)
-    return render_template('pages/test.html', links= links, user = uniqueID)
+    return "hi"
 
 @app.route('/test', methods=['GET', 'POST'])
 @login_required             # Limits access to authenticated users
