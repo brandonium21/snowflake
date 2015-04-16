@@ -39,17 +39,17 @@ def user_profile_page():
 @app.route('/delete', methods=['GET', 'POST'])
 @login_required             # Limits access to authenticated users
 def delete():
-    user_id = current_user.id
-    links = Url.query.filter_by(user_id = user_id).all()
-    uniqueID = UserAuth.query.filter_by(user_id = user_id).first()
-
     if request.method == 'POST':
         id_get = request.form['delete']
         id_row = Url.query.get(id_get)
         db.session.delete(id_row)
         db.session.commit()
+        user_id = current_user.id
+        links = Url.query.filter_by(user_id = user_id).all()
+        uniqueID = UserAuth.query.filter_by(user_id = user_id).first()
+
         return render_template('pages/test.html', links= links, user = uniqueID)
-    return "hi"
+    return render_template('pages/test.html', links= links, user = uniqueID)
 
 @app.route('/test', methods=['GET', 'POST'])
 @login_required             # Limits access to authenticated users
