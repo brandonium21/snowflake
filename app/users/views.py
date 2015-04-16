@@ -44,12 +44,12 @@ def delete():
     uniqueID = UserAuth.query.filter_by(user_id = user_id).first()
 
     if request.method == 'POST':
-            id_get = request.form['delete']
-            id_row = Url.query.get(id_get)
-            db.session.delete(id_row)
-            db.session.commit()
+        id_get = request.form['delete']
+        id_row = Url.query.get(id_get)
+        db.session.delete(id_row)
+        db.session.commit()
+        return render_template('pages/test.html', links= links, user = uniqueID)
     return render_template('pages/test.html', links= links, user = uniqueID)
-
 
 @app.route('/test', methods=['GET', 'POST'])
 @login_required             # Limits access to authenticated users
