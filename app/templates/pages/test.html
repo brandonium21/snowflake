@@ -52,6 +52,17 @@ form {
     margin-bottom: 2%;
     margin-top: 2%;
 }
+
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.42;
+  border-radius: 15px;
+}
+
 </style>
 <nav class="navbar navbar-default">
     <div class="navbar-header">
@@ -87,7 +98,7 @@ form {
             <li class="list-group-item"><a id={{link.id}} class='pull-left' href="{{ link.url }}">{{ link.title }}</a>
                 <p id='description'>{{ link.description }}</p>
                 <form action="/delete" id = 'id' method="POST">
-                        <button type="submit" id = 'app' name='delete' value = "{{link.id}}" class="btn btn-danger"><strong>x</strong>
+                        <button type="submit" id = 'app' name='delete' value = "{{link.id}}" class="btn btn-danger btn-circle"><strong>x</strong>
                     </button>
                 </form>
             </li>
