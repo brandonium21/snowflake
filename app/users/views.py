@@ -98,6 +98,14 @@ def log():
     return render_template("pages/log.html", users= users )
     return 'none'
 
+################### SIMPLE WAKE-UP ##############################
+
+@app.route('/snowflake/wakeup', methods=['GET'])
+def wakeup():
+    return 'im awake'
+
+#################################################################
+
 @app.errorhandler(500)
 def page_not_found(e):
     return render_template('pages/404.html'), 500
