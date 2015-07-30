@@ -4,15 +4,16 @@ html,
 body {
     margin: 0px;
     padding: 0px;
+    height: 100%;
 }
 
 .navbar {
-    background-color: #BC5798;
-    border-color: #BC5798;
+    background-color: white;
+    border-color: #eee;
 }
 
 .navbar-default .navbar-brand {
-    color: #fff;
+    color: #BC5798;
 }
 
 @font-face {
@@ -21,7 +22,17 @@ body {
     font-size: 2em;
 }
 
-#description {}
+#fav {
+    margin-right: 6px;
+}
+
+#description {
+    color: #777;
+    width: 60%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
 
 #link {
     color: #BC5798;
@@ -40,7 +51,6 @@ body {
     width: 50%;
     text-overflow: ellipsis;
     /* Required for text-overflow to do anything */
-    
     white-space: nowrap;
     overflow: hidden;
 }
@@ -65,7 +75,7 @@ body {
 
 #list {
     overflow: scroll;
-    height: 150px;
+    height: 100%;
     position: relative;
     bottom: 0px;
     width: 100%;
@@ -89,7 +99,7 @@ body {
     <div class="navbar-header">
         <a class="navbar-brand" style='font-family: HelveticaNeue-Light;' href="#">SnowFlake</a>
         <a class="navbar-brand pull-right" href="#menu">
-            <span class="glyphicon glyphicon-cog"></span>
+            <span style="color: #BC5798" class="glyphicon glyphicon-cog"></span>
         </a>
     </div>
 </nav>
@@ -117,7 +127,9 @@ body {
 <div id='list'>
     <ul class="list-group">
         {% for link in links %}
-        <li style="cursor: pointer;" class="list-group-item"><a id='link' class='' href="{{ link.url }}">{{ link.title }}</a>
+        <li style="cursor: pointer;" class="list-group-item">
+            <span id="fav" class='pull-left'><img src="http://www.google.com/s2/favicons?domain={{ link.url }}"></span>
+            <a id='link' class='' href="{{ link.url }}">{{ link.title }}</a>
             <p class='right' id='description'>{{ link.description }}</p>
         </li>
         <div class='clearfix'></div>
