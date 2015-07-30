@@ -48,10 +48,10 @@ def delete():
         links = Url.query.filter_by(user_id = user_id).all()
         uniqueID = UserAuth.query.filter_by(user_id = user_id).first()
 
-        return render_template('pages/test.html', links= links, user = uniqueID)
-    return render_template('pages/test.html', links= links, user = uniqueID)
+        return render_template('pages/letitsnow.html', links= links, user = uniqueID)
+    return render_template('pages/letitsnow.html', links= links, user = uniqueID)
 
-@app.route('/test', methods=['GET', 'POST'])
+@app.route('/letitsnow', methods=['GET', 'POST'])
 @login_required             # Limits access to authenticated users
 def testPage():
     user_id = current_user.id
@@ -71,7 +71,7 @@ def testPage():
             db.session.commit()
             links = Url.query.filter_by(user_id = user_id).all()
     print 'worked'
-    return render_template('pages/test.html', links= links, user = uniqueID)
+    return render_template('pages/letitsnow.html', links= links, user = uniqueID)
 
 
 @app.route('/<username>', methods=['GET', 'POST'])
