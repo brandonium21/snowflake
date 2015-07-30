@@ -160,7 +160,7 @@ $(window).resize(function(e) {
 });
 </script>
 <script type="text/javascript">
-var placeholder = "";
+var placeholder = "Url";
 var val = ""
 var smallplaceholder = ""
 $(".dropdown-menu li span").click(function() {
@@ -187,6 +187,9 @@ $("form[id='form']").submit(function() {
             val = "www." + smallplaceholder + ".com/" + input;
         }
         $("#url").val(val);
+    }
+    else{
+        $("#url").val(input);
     }
 });
 </script>
