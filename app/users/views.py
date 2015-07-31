@@ -87,6 +87,17 @@ def show(username):
 @app.route('/', methods=['GET', 'POST'])
 def alt_home():
     return render_template('pages/home_page.html')
+'''
+@app.route('/stats', methods=['GET', 'POST'])
+@login_required
+def stats():
+
+    if request.method == 'POST':
+        url = request.form['url']
+        clicked = Url.query.filter_by(url = url).first()
+        clicked  
+    return render_template('pages/stats.html', user = username, links = links, stats=stats)
+'''
 
 @app.route('/log', methods= ['GET', 'POST'])
 @roles_required('admin')

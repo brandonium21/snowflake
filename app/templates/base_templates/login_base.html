@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <title>SnowFlake</title>
-
     <!-- Bootstrap -->
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="/static/app/app.css" rel="stylesheet">
@@ -19,29 +18,14 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
     <![endif]-->
-
-    <script type="text/javascript">
-    $(document).ready(function() {
-        $("#menu").mmenu({
-            "offCanvas": {
-                "position": "right"
-            },
-            "header": {
-                "title": "Settings",
-                "add": true,
-                "update": true
-            }
-        });
-    });
-    </script>
 </head>
 
 <body>
-<style type="text/css">
-.glyphicon{
-    color: #fff;
-}
-</style>
+    <style type="text/css">
+    .glyphicon {
+        color: #fff;
+    }
+    </style>
     <!--
     <div class="with-margins">
         <a href="{{ url_for('home_page') }}">Home</a> &nbsp; | &nbsp;
@@ -50,7 +34,7 @@
         <a href="{{ url_for('user_profile_page') }}">User profile</a>
     </div>
      <hr class="no-margins"/>
--->
+
     <nav id="menu">
         <ul>
             <li>{% if current_user.is_authenticated() %}
@@ -59,27 +43,21 @@
             </li>
         </ul>
     </nav>
-
+-->
     <div id="main-div" class="without-margins">
         {# One-time system messages called Flash messages #} {% block flash_messages %} {%- with messages = get_flashed_messages(with_categories=true) -%} {% if messages %} {% for category, message in messages %} {% if category=='error' %} {% set category='danger' %} {% endif %}
         <div class="alert alert-{{category}}">{{ message|safe }}</div>
         {% endfor %} {% endif %} {%- endwith %} {% endblock %} {% block main %}{% endblock %}
     </div>
-
     <CENTER>
         <div id="header-div" class="clearfix">
             <!--
         <div class="pull-left"><a href="{{ url_for('home_page') }}"><span class="header-title">MyApp</span></a></div>
         <div class="pull-right">
         -->
-
-
-
-
         </div>
         </div>
     </CENTER>
-    
     <!--
     <hr class="no-margins" />
     <div id="footer-div" class="clearfix with-margins">

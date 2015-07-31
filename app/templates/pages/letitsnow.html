@@ -13,7 +13,7 @@ form {
     width: 100%;
 }
 
-.navbar {
+` .navbar {
     background-color: white;
     border-color: #eee;
 }
@@ -29,13 +29,11 @@ form {
 }
 
 #description {
-    color: #777;
     width: 60%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin-left: 38%;
-
+    margin-left: 45%;
 }
 
 #link {
@@ -91,8 +89,10 @@ form {
 <nav class="navbar navbar-default">
     <div class="navbar-header">
         <a class="navbar-brand" style='font-family: HelveticaNeue-Light;' href="#">SnowFlake</a>
-        <a class="navbar-brand pull-right" href="#menu">
-            <span style="color: #BC5798" class="glyphicon glyphicon-cog"></span>
+        <a href="{{ url_for('user.logout') }}" class="navbar-brand pull-right">
+            {% if current_user.is_authenticated() %}
+            <span style="color: #d9534f" class="glyphicon glyphicon-off"></span> 
+            {% endif %}
         </a>
     </div>
 </nav>
@@ -132,14 +132,15 @@ form {
         <button type="submit" id='submit' class="btn btn-success">
             Add Link
         </button>
-        <br><br>
+        <br>
+        <br>
     </form>
     <div id='list'>
         <ul class="list-group clearfix">
             {% for link in links %}
             <li class="list-group-item" style="text-align: left; ">
                 <span id="fav" class='pull-left'><img src="http://www.google.com/s2/favicons?domain={{ link.url }}"></span>
-                <a id={{link.id}} class='pull-left' href="{{ link.url }}">{{ link.title }}</a>
+                <a id={{link.id}} class='pull-left' style="white-space: nowrap; max-width: 32%; overflow: hidden; text-overflow: ellipsis; height: 20px;" href="{{ link.url }}">{{ link.title }}</a>
                 <span class="text-danger"><p id='description'>{{ link.description }}</p></span>
                 <form action="/delete" id='id' method="POST">
                     <span>
@@ -180,15 +181,13 @@ $("form[id='form']").submit(function() {
     if (placeholder != "Url") {
         if (placeholder == "Vine") {
             val = "www." + smallplaceholder + ".co/" + input;
-        } 
-        else if (placeholder == "Tumblr") {
+        } else if (placeholder == "Tumblr") {
             val = "www." + smallplaceholder + ".com/blog/" + input;
         } else {
             val = "www." + smallplaceholder + ".com/" + input;
         }
         $("#url").val(val);
-    }
-    else{
+    } else {
         $("#url").val(input);
     }
 });
