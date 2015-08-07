@@ -102,7 +102,6 @@ body {
     #wrap {
         max-width: 100%;
         height: auto;
-        
     }
     body {
         background-color: #fff;
@@ -144,6 +143,7 @@ body {
                         <li id="soc"><img src="http://www.google.com/s2/favicons?domain=www.instagram.com"><span>Instagram</span></li>
                         <li id="soc"><img id="favimg" src="https://www.tumblr.com/favicon.ico"><span>Tumblr</span></li>
                         <li id="soc"><img src="http://www.google.com/s2/favicons?domain=www.vine.co"><span>Vine</span></li>
+                        <li id="soc"><img src="http://www.google.com/s2/favicons?domain=www.youtube.com"><span>Youtube</span></li>
                         <li id="soc"><img src="http://www.google.com/s2/favicons?domain=www.myspace.com"><span>Myspace</span></li>
                         <li id="soc"><img src="http://www.google.com/s2/favicons?domain=www.linkedin.com"><span>LinkedIn</span></li>
                         <li id="soc"><img src="http://www.google.com/s2/favicons?domain=www.github.com"><span>Github</span></li>
@@ -211,6 +211,8 @@ $("form[id='form']").submit(function() {
             val = "www." + smallplaceholder + ".co/" + input;
         } else if (placeholder == "Tumblr") {
             val = "www." + smallplaceholder + ".com/blog/" + input;
+        } else if (placeholder == "Youtube") {
+            val = "www." + smallplaceholder + ".com/channel/" + input;
         } else {
             val = "www." + smallplaceholder + ".com/" + input;
         }
