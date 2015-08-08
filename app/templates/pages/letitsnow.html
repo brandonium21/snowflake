@@ -107,6 +107,12 @@ body {
         background-color: #fff;
     }
 }
+
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
 </style>
 <nav class="navbar navbar-default">
     <div class="navbar-header">
@@ -134,7 +140,7 @@ body {
             <div class="input-group">
                 <div class="input-group-btn">
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Social<span class="caret"></span></button>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu scrollable-menu">
                         <li class="dropdown-header">Choose one and input username</li>
                         <li role="separator" class="divider"></li>
                         <li id="soc"><img src="http://www.google.com/s2/favicons?domain=www.snowflakeapp.herokuapp.com"><span>Url</span></li>
