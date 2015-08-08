@@ -2,7 +2,6 @@
 <style type="text/css">
 html,
 body {
-    
     margin: 0px;
     padding: 0px;
     height: 100%;
@@ -11,6 +10,7 @@ body {
 .navbar {
     background-color: white;
     border-color: #eee;
+    margin-bottom: 0;
 }
 
 .list-group-item {
@@ -71,7 +71,6 @@ body {
 #list {
     height: 40%;
     width: auto;
-    position: relative;
     bottom: 0;
     width: 100%;
 }
@@ -88,7 +87,64 @@ body {
 #join {
     margin-bottom: 7%;
 }
+
+#banner {
+    background-color: #F5F5F5;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+}
+
+#userPhoto {
+    margin-top: 40px;
+}
+
+#sharebtn {
+    margin: 30px;
+    vertical-align: middle;
+    display: inline;
+}
+
+.lead {
+    line-height: 3em;
+}
+
+h3 {
+    padding-top: 40px;
+}
+
+#nameuser {
+    font-family: HelveticaNeue-Light;
+}
+
+#wrap {
+    max-width: 40%;
+    height: auto;
+    background-color: #fff;
+    padding: 0%;
+}
+
+@media only screen and (max-width: 600px) {
+    #wrap {
+        max-width: 100%;
+        height: auto;
+    }
+    body {
+        background-color: #fff;
+    }
+}
 </style>
+<div id="fb-root"></div>
+<script>
+(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=841922889193393";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
 <nav class="navbar navbar-default">
     <div class="navbar-header">
         <a class="navbar-brand" style='font-family: HelveticaNeue-Light;' href="#">SnowFlake</a> {% if current_user.is_authenticated() %}
@@ -102,38 +158,44 @@ body {
         {% endif %}
     </div>
 </nav>
-{% if user %}
-<div class="media">
-    <div class="media-left">
-        <a href="#">
-            <img class="media-object" src="https://sigil.cupcake.io/{{ user }}?w=96" alt="...">
+<div id="wrap" class="container">
+    {% if user %}
+    <center>
+        <img id="userPhoto" class="img-circle" src="https://sigil.cupcake.io/{{ user }}?w=96" alt="...">
+        <h4 id="nameuser">{{ user }}</h4>
+        <a class="btn btn-default" id='join' href="{{ url_for('user.register') }}" style="margin-top:20px; border-color: #BC5798;">Join SnowFlake
         </a>
+    </center>
+    {% endif %}
+    <div id="banner" class="container">
+        <span><p id="sharebtn" class="lead"><a style="color: #4B67A1; text-decoration: none !important;" href="https://www.facebook.com/sharer/sharer.php?u=http://snowflakeapp.herokuapp.com/{{ user }}">Facebook</a></p></span>
+        <span><p id="sharebtn" class="lead"><a style=" color: #5EA9DD; text-decoration: none !important;" href="https://twitter.com/share" data-text="View my snowflake">Twitter</a></p></span>
+        <span><p id="sharebtn" class="lead"><a style="color: #DF4B38; margin-right: 0; text-decoration: none !important;" href="https://plus.google.com/share?url=http%3A%2F%2Fhttp://snowflakeapp.herokuapp.com/{{ user }}">Google+</a></p></span>
     </div>
-    <div class="media-body ">
-        <h4 class="media-heading">{{ user }}</h4>
-        <center>
-            <a id='join' href="{{ url_for('user.register') }}" style="margin-top:20px; color: #fff; background-color: #BC5798; border-color: #BC5798;" class="btn btn-info ">Join SnowFlake
-        </a></center>
+    <div id='list'>
+        <ul class="list-group clearfix">
+            {% for link in links %}
+            <li style="cursor: pointer;" class="list-group-item">
+                <span id="fav" class='pull-left'><img src="http://www.google.com/s2/favicons?domain={{ link.url }}"></span>
+                <a id='link' class='pull-left' style="white-space: nowrap; max-width: 32%; overflow: hidden; text-overflow: ellipsis; height: 20px;" href="{{ link.url }}">{{ link.title }}</a>
+                <span><p class='right' id='description'>{{ link.description }}</p></span>
+            </li>
+            {% endfor %}
+        </ul>
     </div>
 </div>
-{% endif %}
-<!--//
-<center>
-    <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="link"></div>
-    <br></br>
-</center>
--->
-<div id='list'>
-    <ul class="list-group clearfix">
-        {% for link in links %}
-        <li style="cursor: pointer;" class="list-group-item">
-            <span id="fav" class='pull-left'><img src="http://www.google.com/s2/favicons?domain={{ link.url }}"></span>
-            <a id='link' class='pull-left' style="white-space: nowrap; max-width: 32%; overflow: hidden; text-overflow: ellipsis; height: 20px;" href="{{ link.url }}">{{ link.title }}</a>
-            <span><p class='right' id='description'>{{ link.description }}</p></span>
-        </li>
-        {% endfor %}
-    </ul>
-</div>
+<script>
+! function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0],
+        p = /^http:/.test(d.location) ? 'http' : 'https';
+    if (!d.getElementById(id)) {
+        js = d.createElement(s);
+        js.id = id;
+        js.src = p + '://platform.twitter.com/widgets.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }
+}(document, 'script', 'twitter-wjs');
+</script>
 <script type="text/javascript">
 $('.list-group-item').delegate('a', 'click', function(event) {
     var url = this.href;
