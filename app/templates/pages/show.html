@@ -156,7 +156,7 @@ h3 {
 </script>
 <nav class="navbar navbar-default">
     <div class="navbar-header">
-        <a class="navbar-brand" style='font-family: HelveticaNeue-Light;' href="#">SnowFlake</a> {% if current_user.is_authenticated() %}
+        <a class="navbar-brand" style='font-family: HelveticaNeue-Light;' href="/letitsnow">SnowFlake</a> {% if current_user.is_authenticated() %}
         <a href="{{ url_for('user.logout') }}" class="navbar-brand pull-right">
             <span style="color: #d9534f" class="glyphicon glyphicon-off"></span>
         </a>
