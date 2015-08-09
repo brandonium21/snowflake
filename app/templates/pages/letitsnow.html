@@ -157,6 +157,7 @@ body {
                         <li id="soc"><img src="http://www.google.com/s2/favicons?domain=www.twitter.com"><span>Twitter</span></li>
                         <li id="soc"><img src="http://www.google.com/s2/favicons?domain=www.instagram.com"><span>Instagram</span></li>
                         <li id="soc"><img src="http://www.google.com/s2/favicons?domain=www.plus.google.com"><span>Youtube</span></li>
+                        <li id="soc"><img src="http://www.google.com/s2/favicons?domain=www.reddit.com"><span>Reddit</span></li>
                         <li id="soc"><img id="favimg" src="https://www.tumblr.com/favicon.ico"><span>Tumblr</span></li>
                         <li id="soc"><img src="http://www.google.com/s2/favicons?domain=www.vine.co"><span>Vine</span></li>
                         <li id="soc"><img src="http://www.google.com/s2/favicons?domain=www.youtube.com"><span>Youtube</span></li>
@@ -212,6 +213,9 @@ $(".dropdown-menu li span").click(function() {
     placeholder = $(this).text();
     smallplaceholder = placeholder.toLowerCase();
     if (placeholder != "Url") {
+        if (placeholder == Reddit) {
+            $('input[name=url]').attr('placeholder', '/r');
+        }
         $('input[name=url]').attr('placeholder', 'Input your ' + placeholder + ' username...');
     } else {
         $('input[name=url]').attr('placeholder', "Url...");
@@ -229,6 +233,8 @@ $("form[id='form']").submit(function() {
             val = "www." + smallplaceholder + ".com/blog/" + input;
         } else if (placeholder == "Youtube") {
             val = "www." + smallplaceholder + ".com/channel/" + input;
+        } else if (placeholder == "Reddit") {
+            val = "www." + smallplaceholder + ".com/r/" + input;
         } else {
             val = "www." + smallplaceholder + ".com/" + input;
         }
