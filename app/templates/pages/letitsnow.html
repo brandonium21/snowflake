@@ -215,8 +215,9 @@ $(".dropdown-menu li span").click(function() {
     if (placeholder != "Url") {
         if (placeholder == "Reddit") {
             $('input[name=url]').attr('placeholder', '/r');
+        } else {
+            $('input[name=url]').attr('placeholder', 'Input your ' + placeholder + ' username...');
         }
-        $('input[name=url]').attr('placeholder', 'Input your ' + placeholder + ' username...');
     } else {
         $('input[name=url]').attr('placeholder', "Url...");
     }
@@ -233,7 +234,7 @@ $("form[id='form']").submit(function() {
             val = "www." + smallplaceholder + ".com/blog/" + input;
         } else if (placeholder == "Youtube") {
             val = "www." + smallplaceholder + ".com/channel/" + input;
-        } else if (placeholder == "/r") {
+        } else if (placeholder == "Reddit") {
             val = "www.reddit.com/r/" + input;
         } else {
             val = "www." + smallplaceholder + ".com/" + input;
