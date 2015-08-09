@@ -233,8 +233,8 @@ $("form[id='form']").submit(function() {
             val = "www." + smallplaceholder + ".com/blog/" + input;
         } else if (placeholder == "Youtube") {
             val = "www." + smallplaceholder + ".com/channel/" + input;
-        } else if (placeholder == "Reddit") {
-            val = "www." + smallplaceholder + ".com/r/" + input;
+        } else if (placeholder == "/r") {
+            val = "www.reddit.com/r/" + input;
         } else {
             val = "www." + smallplaceholder + ".com/" + input;
         }
