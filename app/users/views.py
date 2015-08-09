@@ -11,6 +11,7 @@ from flask_user import current_user, login_required, roles_required
 from flask import request
 from flask import json
 from models import *
+import re
 #
 # User Profile form
 #
@@ -48,8 +49,8 @@ def delete():
         links = Url.query.filter_by(user_id = user_id).all()
         uniqueID = UserAuth.query.filter_by(user_id = user_id).first()
 
-        return render_template('pages/letitsnow.html', links= links, user = uniqueID)
-    return render_template('pages/letitsnow.html', links= links, user = uniqueID)
+        return redirect(url_for('testPage'))
+    return redirect(url_for('testPage'))
 
 @app.route('/letitsnow', methods=['GET', 'POST'])
 @login_required             # Limits access to authenticated users
