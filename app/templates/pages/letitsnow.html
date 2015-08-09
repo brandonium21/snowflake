@@ -213,7 +213,7 @@ $(".dropdown-menu li span").click(function() {
     placeholder = $(this).text();
     smallplaceholder = placeholder.toLowerCase();
     if (placeholder != "Url") {
-        if (placeholder == Reddit) {
+        if (placeholder == "Reddit") {
             $('input[name=url]').attr('placeholder', '/r');
         }
         $('input[name=url]').attr('placeholder', 'Input your ' + placeholder + ' username...');
