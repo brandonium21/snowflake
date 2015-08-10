@@ -46,7 +46,21 @@
 -->
     <div id="main-div" class="without-margins">
         {# One-time system messages called Flash messages #} {% block flash_messages %} {%- with messages = get_flashed_messages(with_categories=true) -%} {% if messages %} {% for category, message in messages %} {% if category=='error' %} {% set category='danger' %} {% endif %}
-        <div class="alert alert-{{category}}">{{ message|safe }}</div>
+        <div class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="alert alert-{{category}}">{{ message|safe }}</p>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
         {% endfor %} {% endif %} {%- endwith %} {% endblock %} {% block main %}{% endblock %}
     </div>
     <CENTER>
